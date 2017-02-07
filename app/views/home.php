@@ -19,12 +19,8 @@ echo "<body>".PHP_EOL;
             </a>
             <nav role="navigation" id="nav-main" class="okayNav">
                 <ul class="nav navbar-nav">
-                    <li class="active dropdown sub-menu">
-                        <a alt="Mea" class="dropdown-toggle nav-link" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Home</a>
-                        <div class="dropdown-menu sub-menu-panel" aria-labelledby="dropdownMenu1">
-                            <a alt="Mea" class="sub-menu-item active" href="index.html">Home Page 1</a>
-                            <a alt="Mea" class="sub-menu-item" href="index-2.html">Home Page 2</a>
-                        </div>
+                    <li class="active sub-menu">
+                        <a class="nav-link" href="/" type="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">Strona główna</a>
                     </li>
                     <li  class="dropdown sub-menu">
                         <a alt="Mea" class="dropdown-toggle nav-link" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Pages</a>
