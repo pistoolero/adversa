@@ -1,0 +1,5 @@
+{
+	"require": {
+		"waylaidwanderer/php-steamcommunity": "dev-master"
+	}
+}
