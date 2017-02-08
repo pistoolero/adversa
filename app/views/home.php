@@ -87,11 +87,18 @@ echo "<body>".PHP_EOL;
             if(file_exists($require)){
                 Site::load(VIEWS_PATH.'pages/'.$_GET['page']);
             }else{
-                header("HTTP/1.0 404 Not Found");
-                $error = http_response_code();
-                Site::load(TEMPLATES_PATH.'errors/404');
-                clearstatcache();
+                if(ErrorCode == 403){
+                    header('HTTP/1.0 403 Forbidden');
+                    $error = http_response_code();
+                    Site::load(VIEWS_PATH.'403');
+                    clearstatcache();
+                }elseif (ErrorCode == 404) {
 
+                    header("HTTP/1.0 404 Not Found");
+                    $error = http_response_code();
+                    Site::load(VIEWS_PATH . '404');
+                    clearstatcache();
+                }
             }
         } elseif(!isset($_GET['post'])) {
             require_once __DIR__.DIRECTORY_SEPARATOR . 'index.php';
@@ -229,6 +236,26 @@ echo "<body>".PHP_EOL;
             <img src="/public_html/images/Preloader.gif" alt="MEA Proloader">
         </div>
     </div>
+    <!-- Style Switcher -->
+    <div style="display:none" class="hide-color">
+        <div id="custumize-style">
+            <a href="#" class="switcher open"> <span class="icon-switcher"><i class="material-icons">&#xE3B7;</i></span></a>
+            <div>
+                <h3 class="color-option-title">Colors</h3>
+                <ul class="colors-style" id="custom-color">
+                    <li><a href="#" class="red"></a></li>
+                    <li><a href="#" class="pink"></a></li>
+                    <li><a href="#" class="purple"></a></li>
+                    <li><a href="#" class="deep-purple"></a></li>
+                    <li><a href="#" class="indigo"></a></li>
+                    <li><a href="#" class="blue"></a></li>
+                    <li><a href="#" class="green"></a></li>
+                    <li><a href="#" class="yellow"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Style Switcher -->
 
 <?php
 Site::load(VIEWS_PATH.'footer');

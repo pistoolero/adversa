@@ -1,8 +1,11 @@
+ErrorDocument 404 /errors/404.php
+ErrorDocument 403 /errors/403.php
+
 RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 
-ErrorDocument 404 /views/404.php
+
 
 <IfModule mod_rewrite.c>
 

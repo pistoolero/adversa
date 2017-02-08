@@ -2,10 +2,10 @@ jQuery(document).ready(function($) {
 	
 	var colors = '';
 	var server_url = ''; 
-	var folder_url = 'assets/css/colors/'; 
+	var folder_url = 'public_html/css/colors/';
 
 	// Style switcher
- 	$(".hide-color").show(4000);
+ 	$(".hide-color").fadeIn(3000);
     $('#custumize-style').animate({
         left: '-134px'
     });

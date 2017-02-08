@@ -8,6 +8,7 @@
  */
 class Site
 {
+    public static $db_host, $db_name, $db_user, $db_pass;
     public static function load($file){
         require_once $file.".php";
 

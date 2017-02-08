@@ -14,16 +14,33 @@ Site::javascript('jquery.inview');
 Site::javascript('jquery.counterup.min');
 Site::javascript('scroll-top');
 Site::javascript('material.min');
+Site::javascript('switcher');
 Site::javascript('owl.carousel.min');
-Site::javascript('form-validator.min');
-Site::javascript('contact-form-script.min');
 Site::javascript('wow');
 Site::javascript('main');
 ?>
+
+
 <script type="text/javascript">
     window.cookieconsent_options = {"message":"Ta strona wykorzystuje cookies, aby zapewnić Ci jak najlepsze doświadczenia związane z naszą stroną.","dismiss":"Mam to!","learnMore":"Więcej info","link":null,"theme":"dark-bottom"};
 </script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
+<?php Site::javascript('cookieconsent.min'); ?>
+<script>
+    function to_register(){
+        var content = '<form method="POST" id="login-form" action=""><div id="add_err"></div><div class="form-group label-floating"><label for="username" class="control-label">Login</label> <input type="text" class="form-control" id="username" name="username"> </div> <div class="form-group label-floating"> <label for="password" class="control-label">Hasło</label> <input type="password" class="form-control" id="password" name="password"> </div> <button type="button" id="login" class="btn btn-common mt-50 btn-block" name="login">Zaloguj</button> </form>';
+
+        $("#myModalLabel").html("Logowanie");
+        $("#changer").html('<span class="text-left">Nie masz konta? <a class="fake-link" id="to_register" onclick="to_login()">Zarejestruj się!</a></span>');
+        $("#loginBoxContent").html(content);
+
+    }
+    function to_login(){
+        var content = '<form method="POST" id="register-form" action=""><div id="add_err"></div><div class="form-group label-floating"><label for="username" class="control-label">Login</label> <input type="text" class="form-control" id="username" name="username"> </div> <div class="form-group label-floating"> <label for="password" class="control-label">Hasło</label> <input type="password" class="form-control" id="password" name="password"> </div> <button type="button" id="register" class="btn btn-common mt-50 btn-block" name="register">Zarejestruj</button> </form>';
+        $("#myModalLabel").html("Rejestracja");
+        $("#changer").html('<span class="text-left">Masz już kotno? <a class="fake-link" id="to_login" onclick="to_register()">Zaloguj się!</a></span>');
+        $("#loginBoxContent").html(content);
+    }
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#add_err").css('display', 'none', 'important');
@@ -32,7 +49,7 @@ Site::javascript('main');
             password=$("#password").val();
             $.ajax({
                 type: "POST",
-                url: "/app/core/login.php",
+                url: "router.php",
                 data: {username: username, password: password, login : "login"},
 
                     success: function(html){
@@ -46,12 +63,23 @@ Site::javascript('main');
                     else    {
                         $("#add_err").css('display', 'inline', 'important');
                         if(html=="username"){
+                            $("label[for='username']").html("Login");
+                            $("label[for='password']").html("Hasło");
                             $("#add_err").html("<div class='alert alert-dismissible alert-warning z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Taki użytkownik nie istnieje");
                         }else if(html=="password"){
+                            $("label[for='username']").html("Login");
+                            $("label[for='password']").html("Hasło");
                             $("#add_err").html("<div class='alert alert-dismissible alert-warning z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Niepoprawne hasło");
                         }else if(html=="active"){
+                            $("label[for='username']").html("Login");
+                            $("label[for='password']").html("Hasło");
                             $("#add_err").html("<div class='alert alert-dismissible alert-warning z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Twoje konto nie jest aktywne!");
+                        }else if(html=="blank"){
+                            $("#add_err").html("<p class='text-danger text-center'>Wypełnij wszystkie pola!</p>");
+                        }else{
+                            $("#add_err").html(html);
                         }
+
 
                         $("#login").html("Zaloguj");
                     }

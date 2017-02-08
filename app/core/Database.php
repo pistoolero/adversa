@@ -64,11 +64,12 @@ class Database
         }
     }
 
-    public function customQuery(string $query,string $type,bool $multi = false, array $params = []){
+    public function customQuery(string $query,string $type, array $params = [],bool $multi = false){
         $this->query = $query;
         $exec = $this->db->Prepare($this->query);
+
         foreach ($params as $index => $param){
-            $exec->bindValue($index,$param[0],$param[1]);
+            $exec->bindParam($index + 1,$param[0],$param[1]);
         }
         $exec->Execute();
         switch ($type){
@@ -89,7 +90,6 @@ class Database
                 break;
 
         }
-
         return $result;
     }
 

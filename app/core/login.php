@@ -7,28 +7,22 @@
  */
 
 if(isset($_POST['login'])){
-    if($_POST['username'] == "" OR empty($_POST['username']) OR !isset($_POST['username'])){
-        // redirect("error","9","/login");
-        //echo "false";
+    $obj = new User;
+    if(strlen($_POST['username']) < 5 || strlen($_POST['password']) < 5){
+       echo "blank";
+       exit;
     }
-    $user = LoginUser($_POST['username']);
-    if(!isset($user['username'])){
-        $username = "";
-    }else{
-        extract($user, EXTR_PREFIX_SAME, "db");
-    }
-    if(strtolower($_POST['username']) != strtolower($username) OR !isset($username) OR empty($username) OR $username==""){
-        // redirect("error","4","/login");
+    $user = $obj->userData($_POST['username']);
+    if(strtolower($_POST['username']) != $user['username']){
         echo "username";
     }else{
         if($active != "active"){
-            //redirect("error","6","/login");
             echo "active";
             exit;
         }
         if (password_verify($_POST['password'], $password)) {
             session_start();
-            insertIP($user_id);
+            //insertIP($user_id);
             echo "true";
             $_SESSION['id'] = $user_id;
             $_SESSION['sessid'] = session_id();
@@ -38,10 +32,9 @@ if(isset($_POST['login'])){
             $_SESSION['email'] = $email;
             $_SESSION['register'] = $register;
 
-            //redirect("success","4","/");
+
 
         } else {
-            //redirect("error","5","/login");
             echo "password";
         }
     }

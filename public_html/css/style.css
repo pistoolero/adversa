@@ -1903,3 +1903,12 @@ figure.single-portfolio:hover figcaption {
 .rtn-link{
   cursor: pointer;
 }
+.normal-cursor {
+  cursor: default;
+}
+.form-group .form-control {
+  padding-left: 2%;
+}
+.fake-link{
+  cursor: pointer;
+}

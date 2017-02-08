@@ -14,25 +14,19 @@
 <script type="text/javascript">
     window.cookieconsent_options = {"message":"Ta strona wykorzystuje cookies, aby zapewnić Ci jak najlepsze doświadczenia związane z naszą stroną.","dismiss":"Mam to!","learnMore":"Więcej info","link":null,"theme":"dark-bottom"};
 </script>
-<script>
-// $(document).change(function(){    
-// if( $('.dropdown').is('.open') ) {
-//     $('.dropdown-toggle').removeClass('selected');
-//     console.log("CLOSED");
-    
-// }else {
-//     $('.dropdown-toggle').addClass('selected');
-//     console.log("OPENED");
-// }
-// });
-    $('.dropdown-click').click(function(e) {
-      $(this).toggleClass("selected"); //you can list several class names 
-      e.preventDefault();
-    });
-</script>
+
+
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
 <!-- End Cookie Consent plugin -->
-
+    <script>
+        $(document).ready(function () {
+            $('.cc_btn').addClass("btn");
+            $('.cc_btn').addClass("btn-common");
+            var $aSlc = $('a');
+            console.log($aSlc.hasClass('cc_btn'));
+            console.log("KAPPA");
+        });
+    </script>
 
     <script type="text/javascript">
     function checkUserName(usercheck)

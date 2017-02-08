@@ -24,6 +24,7 @@ session_start();
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+
 define('ENVIRONMENT', isset($_SERVER['LG_ENV']) ? $_SERVER['LG_ENV'] : 'development');
 
 /*

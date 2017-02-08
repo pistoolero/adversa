@@ -9,6 +9,19 @@
 setlocale( LC_ALL, array( 'pl_PL', 'pl_PL.ISO8859-2', 'polish_pol' ) );
 /*
  *
+ * AUTOLOADER KLAS
+ *
+ */
+
+// First, define your auto-load function.
+function LGAutoload(string $className) {
+    include_once(CORE_PATH .$className . '.php');
+}
+
+// Next, register it with PHP.
+spl_autoload_register('LGAutoload');
+/*
+ *
  * STALE DOTYCZACE SCIEZEK
  *
  */
@@ -54,6 +67,10 @@ define('ErrorCode',http_response_code());
  *
  *
  */
+$_ENV['db_name'] = Site::$db_name ?? 'league';
+$_ENV['db_host'] = Site::$db_host ?? 'localhost';
+$_ENV['db_user'] = Site::$db_user ?? 'root';
+$_ENV['db_pass'] = Site::$db_pass ?? '';
 $config = [];
 $config['app_name'] = null;
 $config['db_name'] = $_ENV['db_name'] ?? 'league';
@@ -61,16 +78,3 @@ $config['db_host'] = $_ENV['db_host'] ?? 'localhost';
 $config['db_user'] = $_ENV['db_user'] ?? 'root';
 $config['db_pass'] = $_ENV['db_pass'] ?? '';
 
-/*
- *
- * AUTOLOADER KLAS
- *
- */
-
-// First, define your auto-load function.
-function LGAutoload(string $className) {
-    include_once(CORE_PATH .$className . '.php');
-}
-
-// Next, register it with PHP.
-spl_autoload_register('LGAutoload');

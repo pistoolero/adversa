@@ -51,7 +51,7 @@ class Encryption
 	    }
 }
 
-class Database
+class Databases
 {
 
     protected $host = "localhost";
@@ -222,7 +222,7 @@ class Database
 
 }
 
-class Notification extends Database {
+class Notifications extends Databases {
 	public function clear_unseen(){
 		$query = "UPDATE notifications SET seen = 1 WHERE user_id = :userid AND seen = 0";
 		$stmt = $this->db->Prepare($query);
@@ -249,7 +249,7 @@ class Notification extends Database {
 	}
 }
 
-class User extends Database {
+class Users extends Databases {
 	public $group = 1;
 
 	public function get_user_group() {
