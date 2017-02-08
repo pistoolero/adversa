@@ -204,6 +204,9 @@ echo "<body>".PHP_EOL;
                             <li>
                                 <a href="contact.html"><i class="fa fa-envelope"></i> Contact Us</a>
                             </li>
+                            <li>
+                                <a data-toggle="modal" class="rtn-link" data-target="#loginBox"><i class="fa fa-sign-in"></i>Zaloguj się</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

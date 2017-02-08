@@ -1897,3 +1897,9 @@ figure.single-portfolio:hover figcaption {
 .text-white{
     color: #FFFFFF;
 }
+.modal-content {
+  margin-top: 20% !important;
+}
+.rtn-link{
+  cursor: pointer;
+}

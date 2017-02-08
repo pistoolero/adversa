@@ -59,4 +59,11 @@ class Site
         }
         return $addr;
     }
+    public static function Session() : bool{
+        if(isset($_SESSION['id'])){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
