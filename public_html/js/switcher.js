@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
         $(this).parent().parent().find('li').removeClass('active');
         $("#colors-style").attr("href", folder_url + color_code +".css");
         $(this).parent().addClass('active');
-        //$.cookie("layout_color", server_url + color_code +".css");
+        $.cookie("layout_color", server_url + color_code +".css");
         return false;
     }); 
 	
@@ -59,8 +59,8 @@ jQuery(document).ready(function($) {
         var bg = $(this).css('backgroundImage');
         $('body').css('backgroundImage', bg);
 
-        //$.cookie('layout_bgImage', bg);
-        //$.cookie('layout_bgColors', null);
+        $.cookie('layout_bgImage', bg);
+        $.cookie('layout_bgColors', null);
 
     });
 
@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
         $(this).addClass('active');
         var bg = $(this).css('backgroundColor');
         $('body').css('backgroundColor', bg).css('backgroundImage', 'none');
-        //$.cookie('layout_bgColors', bg);
+        $.cookie('layout_bgColors', bg);
 
     });
 	
@@ -84,7 +84,7 @@ jQuery(document).ready(function($) {
         $('#wrapper').removeClass();
         $('#wrapper').addClass('container');
         $('#wrapper').addClass(menu_pos);
-        //$.cookie('layout_menuPosition', menu_pos);
+        $.cookie('layout_menuPosition', menu_pos);
     });
 	
 	//container-height change:	
@@ -121,7 +121,7 @@ jQuery(document).ready(function($) {
         $('#wrapper').addClass('container');
         $('.menu-position li a').parent().parent().find('a').removeClass('active');
         $('#menu-left-bottom').addClass('active');
-        //$.cookie('layout_menuPosition', '');
+        $.cookie('layout_menuPosition', '');
 		
 		//container-height reset:
         $('#container-height-fixed').trigger('click');

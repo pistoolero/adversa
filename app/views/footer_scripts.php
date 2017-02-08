@@ -25,21 +25,14 @@ Site::javascript('main');
     window.cookieconsent_options = {"message":"Ta strona wykorzystuje cookies, aby zapewnić Ci jak najlepsze doświadczenia związane z naszą stroną.","dismiss":"Mam to!","learnMore":"Więcej info","link":null,"theme":"dark-bottom"};
 </script>
 <?php Site::javascript('cookieconsent.min'); ?>
+
 <script>
-    function to_register(){
-        var content = '<form method="POST" id="login-form" action=""><div id="add_err"></div><div class="form-group label-floating"><label for="username" class="control-label">Login</label> <input type="text" class="form-control" id="username" name="username"> </div> <div class="form-group label-floating"> <label for="password" class="control-label">Hasło</label> <input type="password" class="form-control" id="password" name="password"> </div> <button type="button" id="login" class="btn btn-common mt-50 btn-block" name="login">Zaloguj</button> </form>';
-
-        $("#myModalLabel").html("Logowanie");
-        $("#changer").html('<span class="text-left">Nie masz konta? <a class="fake-link" id="to_register" onclick="to_login()">Zarejestruj się!</a></span>');
-        $("#loginBoxContent").html(content);
-
-    }
-    function to_login(){
-        var content = '<form method="POST" id="register-form" action=""><div id="add_err"></div><div class="form-group label-floating"><label for="username" class="control-label">Login</label> <input type="text" class="form-control" id="username" name="username"> </div> <div class="form-group label-floating"> <label for="password" class="control-label">Hasło</label> <input type="password" class="form-control" id="password" name="password"> </div> <button type="button" id="register" class="btn btn-common mt-50 btn-block" name="register">Zarejestruj</button> </form>';
-        $("#myModalLabel").html("Rejestracja");
-        $("#changer").html('<span class="text-left">Masz już kotno? <a class="fake-link" id="to_login" onclick="to_register()">Zaloguj się!</a></span>');
-        $("#loginBoxContent").html(content);
-    }
+    $("#to_register").click(function(){
+        $('#loginBox').modal('hide');
+    });
+    $("#to_login").click(function(){
+        $('#registerBox').modal('hide');
+    });
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
