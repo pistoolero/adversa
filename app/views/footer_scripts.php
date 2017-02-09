@@ -18,6 +18,7 @@ Site::javascript('switcher');
 Site::javascript('owl.carousel.min');
 Site::javascript('wow');
 Site::javascript('main');
+Site::javascript('jaktutorial');
 ?>
 
 
@@ -88,4 +89,80 @@ Site::javascript('main');
         });
     });
 
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#username_r').on('input',function () {
+            username_r = $('#username_r').val();
+            console.log(username_r);
+            $.ajax({
+                type: "POST",
+                url: "router.php",
+                data: {usercheck: username_r, checkUsername: 'true'},
+                success: function (html) {
+                    $('#check_username').html(html);
+                }
+            })
+        })
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#add_err2").css('display', 'none', 'important');
+        $("#register").click(function(){
+            username_reg=$("#username_r").val();
+            password_reg = $("#password_r").val();
+            mailreg = $("#mail").val();
+            password_repeatreg = $("#repeat_password").val();
+            var n = 4;
+
+            $.ajax({
+                type: "POST",
+                url: "router.php",
+                data: {username: username, password: password_reg, mail: mailreg, password_repeat : password_repeatreg, register: 'true'},
+                success: function(html){
+                    if(html=='true'){
+                        setTimeout(countDown,1000);
+                        function countDown(){
+                            n--;
+                            if(n > 0){
+                                setTimeout(countDown,1000);
+                            }
+                            $("#register").html('<i class="fa fa-check fa-fw"></i> &nbsp; Okno zamknie się za ' + n + "s.");
+                        }
+                        $("#error").css('display', 'inline', 'important');
+                        $("#error").html("<div class='alert alert-dismissible alert-success z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-check'></span> Drużyna została stworzona!");
+                        $("#register").removeClass("btn-challenge");
+                        $("#register").addClass("btn-success");
+                        setTimeout(' window.location.href = "/"; ',4000);
+                    }
+                    else    {
+                        $("#add_err2").css('display', 'inline', 'important');
+                        if(html=="name"){
+                            $("#add_err2").html("<div class='alert alert-dismissible alert-danger z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Nazwa jest zajęta");
+                        }else if(html == "tag"){
+                            $("#add_err2").html("<div class='alert alert-dismissible alert-danger z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Tag zajęty");
+                        }else if(html == "blank"){
+                            $("#add_err2").html("<div class='alert alert-dismissible alert-danger z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Wypełnij wszystkie pola");
+                        }else if(html == "too_long"){
+                            $("#add_err2").html("<div class='alert alert-dismissible alert-danger z-depth-1' role='alert' style='margin-bottom: 2em;'><button data-dismiss=\"alert\" class=\"close\" type=\"button\">&times;</button><span class='fa fa-fw fa-warning'></span> Tag może mieć maksymalnie 6 znaków");
+                        }
+
+                        $("#register").html("Zarejestruj");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err.Message);
+                },
+                beforeSend:function()
+                {
+                    $("#add_err2").css('display', 'inline', 'important');
+                    $("#register").blur();
+                    $("#register").html('<i class="fa fa-spinner fa-pulse fa-fw"></i>Ładowanie...')
+                }
+            });
+            return false;
+        });
+    });
 </script>

@@ -72,8 +72,8 @@ class Database
             $exec->bindParam($index + 1,$param[0],$param[1]);
         }
         $exec->Execute();
-        switch ($type){
-            case "SELECT":
+        switch (strtolower($type)){
+            case "select":
                 if($multi){
                     $result = $exec->fetchAll(PDO::FETCH_ASSOC);
                 }else{
@@ -81,7 +81,7 @@ class Database
                 }
                 break;
 
-            case "INSERT":
+            case "insert":
                 $result = $this->db->lastInsertId();
                 break;
 

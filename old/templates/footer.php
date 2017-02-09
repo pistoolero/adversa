@@ -1,7 +1,7 @@
 </div>
 <?php if(!isset($_SESSION['id'])): ?>
 <!-- Login Box -->
-<div class="modal fade white-text" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal white-text" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -34,7 +34,7 @@
 </div>
 <?php endif; ?>
 <!-- Team Box -->
-<div class="modal fade white-text" id="teamBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal white-text" id="teamBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

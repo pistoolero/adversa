@@ -9,8 +9,8 @@
 ?>
 <?php if(!Site::Session()): ?>
     <!-- Login Box -->
-    <div class="modal fade" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog ezCustTrans" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -40,27 +40,36 @@
         </div>
     </div>
     <!-- Login Box -->
-    <div class="modal fade" id="registerBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
-        <div class="modal-dialog" role="document">
+    <div class="modal" id="registerBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog ezCustTrans" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title uppercase text-center" id="myModalLabel2">Rejestracja</h4>
                 </div>
                 <div class="modal-body center-block">
-                    <div id="loginBoxContent" class="">
-                        <form method="POST" id="login-form" action="">
-                            <div id="add_err"></div>
+                    <div id="registerBoxContent" class="">
+                        <form method="POST" id="register-form" action="">
+                            <div id="add_err2"></div>
 
                             <div class="form-group label-floating">
-                                <label for="username" class="control-label">Login</label>
-                                <input type="text" class="form-control" id="username" name="username">
+                                <label for="username" class="control-label">Login</label><span id="check_username"></span>
+                                <input type="text" class="form-control" id="username_r" name="username">
+                            </div>
+                            <div class="form-group label-floating">
+                                <label for="mail" class="control-label">Adres e-mail</label><span id="check_mail"></span>
+                                <input type="email" class="form-control" id="mail" name="mail">
                             </div>
                             <div class="form-group label-floating">
                                 <label for="password" class="control-label">Hasło</label>
-                                <input type="password" class="form-control" id="password" name="password">
+                                <input type="password" class="form-control" id="password_r" name="password">
                             </div>
-                            <button type="button" id="login" class="btn btn-common mt-50 btn-block" name="login">Zarejestruj</button>
+                            <div class="form-group label-floating">
+                                <label for="repeat_password" class="control-label">Powtórz hasło</label>
+                                <input type="password" class="form-control" id="repeat_password" name="repeat_password">
+                            </div>
+
+                            <button type="button" id="register" class="btn btn-common mt-50 btn-block" name="register">Zarejestruj</button>
                         </form>
                     </div>
                 </div>

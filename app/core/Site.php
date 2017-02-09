@@ -67,4 +67,18 @@ class Site
             return false;
         }
     }
+    public static function GRS(int $length = 32,bool $special = false) :string {
+        if($special == false){
+            $characters = 'qwertyuiopasdfghjklzxcvbnm01234567890QWERTYUIOPASDFGHJKLZXCVBNM';
+        }elseif($special == true){
+            $characters = 'qwertyuiopasdfghjklzxcvbnm01234567890QWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*';
+        }
+
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 }

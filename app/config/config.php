@@ -67,7 +67,7 @@ define('ErrorCode',http_response_code());
  *
  *
  */
-$_ENV['db_name'] = Site::$db_name ?? 'league';
+$_ENV['db_name'] = Site::$db_name ?? 'adversa';
 $_ENV['db_host'] = Site::$db_host ?? 'localhost';
 $_ENV['db_user'] = Site::$db_user ?? 'root';
 $_ENV['db_pass'] = Site::$db_pass ?? '';
