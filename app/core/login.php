@@ -24,16 +24,17 @@ if(isset($_POST['login'])){
             echo "active";
             exit;
         }
-        if (password_verify($_POST['password'], $_POST['password'])) {
+
+        if (password_verify($_POST['password'],$user['password'])) {
             session_start();
             //insertIP($user_id);
             echo "true";
-            $_SESSION['id'] = $user_id;
+            $_SESSION['id'] = $id;
             $_SESSION['sessid'] = session_id();
             $_SESSION['username'] = $username;
             $_SESSION['name'] = $firstname;
             $_SESSION['surname'] = $lastname;
-            $_SESSION['email'] = $email;
+            $_SESSION['email'] = $mail;
             $_SESSION['register'] = $register;
 
 

@@ -51,13 +51,14 @@
                     <div id="registerBoxContent" class="">
                         <form method="POST" id="register-form" action="">
                             <div id="add_err2"></div>
-
+                            <div id="check_username"></div>
+                            <div id="check_mail"></div>
                             <div class="form-group label-floating">
-                                <label for="username" class="control-label">Login</label><span id="check_username"></span>
+                                <label for="username" class="control-label">Login</label>
                                 <input type="text" class="form-control" id="username_r" name="username">
                             </div>
                             <div class="form-group label-floating">
-                                <label for="mail" class="control-label">Adres e-mail</label><span id="check_mail"></span>
+                                <label for="mail" class="control-label">Adres e-mail</label>
                                 <input type="email" class="form-control" id="mail" name="mail">
                             </div>
                             <div class="form-group label-floating">

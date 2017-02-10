@@ -81,4 +81,27 @@ class Site
         }
         return $randomString;
     }
+    public static function set_error($error){
+
+        setcookie("error",$error,time()+1,"/");
+
+    }
+    public static function set_success($success){
+        setcookie("success",$success,time()+1,"/");
+    }
+    public static function redirect(string $type,$number,$location="/"){
+        if($type == 'error'){
+            self::set_error($number);
+            header("Location: ".$location);
+            exit;
+        }else if($type=='success'){
+            self::set_success($number);
+            header("Location: ".$location);
+            exit;
+        }
+    }
+    public static function errorControl(){
+        self::load(CORE_PATH.'error_control');
+    }
+
 }

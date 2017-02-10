@@ -6,7 +6,7 @@
  * Time: 21:19
  */
 
-include_once CONFIG_PATH.'config.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/app/config/config.php';
 
 class Database
 {
@@ -67,7 +67,6 @@ class Database
     public function customQuery(string $query,string $type, array $params = [],bool $multi = false){
         $this->query = $query;
         $exec = $this->db->Prepare($this->query);
-
         foreach ($params as $index => $param){
             $exec->bindParam($index + 1,$param[0],$param[1]);
         }
@@ -77,19 +76,21 @@ class Database
                 if($multi){
                     $result = $exec->fetchAll(PDO::FETCH_ASSOC);
                 }else{
-                    $result = $exec -> fetch(PDO::FETCH_ASSOC);
+                    $result = $exec->fetch(PDO::FETCH_ASSOC);
                 }
                 break;
 
             case "insert":
-                $result = $this->db->lastInsertId();
+                $result = NULL;
                 break;
+
 
             default:
                 $result = NULL;
                 break;
 
         }
+
         return $result;
     }
 

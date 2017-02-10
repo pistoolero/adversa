@@ -12,11 +12,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 	#RewriteRule (.*).(js|css|ttf)$ cache_gzip.php?file=$1.$2 [L] #<- ODKOMENTOWAC PO PRZENIESIENIU!
 	RewriteRule ^match/([^/]+)/?$ index.php?page=match&id=$1 [L]
 	RewriteRule ^login/?$ index.php?page=login [L]
+	RewriteRule ^logout/?$ app/core/logout.php
 	RewriteRule ^signup/?$ index.php?page=register [L]
 	RewriteRule ^messages/?$ index.php?page=messages [L]
 	RewriteRule ^players/([^/]+)/?$ index.php?page=player&nickname=$1 [L]
 	RewriteRule ^user/([^/]+)/?$ index.php?page=user&id=$1 [L]
 	RewriteRule ^settings/?$ index.php?page=settings [L]
+	RewriteRule ^active/([^/]+)/?$ app/core/active_user.php?token=$1 [L]
 	RewriteRule ^team/([0-9]+)/([a-zA-Z0-9#%@&\s\(\)\[\]\-]+)/?$ index.php?page=team&id=$1&teamname=$2 [L,B]
     #RewriteRule ^([a-zA-Z0-9#%@&\s\(\)\[\]\-]+)/?$ index.php?page=$1 [L,B]
 

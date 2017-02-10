@@ -11,6 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
+                <?php  Site::errorControl(); ?>
                 <h1 class="wow animated slideInRight" data-wow-delay=".2s">Krajowa Federacja Sportów Elektronicznych</h1>
                 <h2 class="wow animated slideInRight" data-wow-delay=".4s"><a href="https://graygrids.com/item/mea-free-material-design-multi-purpose-bootstrap-html5-template">Jakieś motto</a></h2>
                 <a href="https://graygrids.com/item/mea-free-material-design-multi-purpose-bootstrap-html5-template" class="wow animated fadeInUp btn btn-common mt-50" data-wow-delay=".6s"><i class="fa fa-thumbs-o-up"></i> Przycisk!<div class="ripple-container"></div></a>

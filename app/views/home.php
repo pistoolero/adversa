@@ -76,6 +76,7 @@ echo "<body>".PHP_EOL;
     </header>
     <!-- /header -->
         <?php
+
         if (isset($_GET['page'])) {
             $require = VIEWS_PATH.'pages/'.$_GET['page'].'.php';
             switch ($_GET['page']) {
@@ -212,7 +213,11 @@ echo "<body>".PHP_EOL;
                                 <a href="contact.html"><i class="fa fa-envelope"></i> Contact Us</a>
                             </li>
                             <li>
+                                <?php if(!isset($_SESSION['id'])): ?>
                                 <a data-toggle="modal" class="rtn-link" data-target="#loginBox"><i class="fa fa-sign-in"></i>Zaloguj się</a>
+                                <?php else: ?>
+                                <a href="/logout"><i class="fa fa-sign-out"></i> Wyloguj się</a>
+                                <?php endif; ?>
                             </li>
                         </ul>
                     </div>

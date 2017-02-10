@@ -12,7 +12,7 @@ if(isset($_POST['login'])){
 if(isset($_POST['checkUsername'])){
     Site::load(CORE_PATH.'validate_username');
 }
-if(isset($_POST['checkEmail'])){
+if(isset($_POST['checkMail'])){
     Site::load(CORE_PATH.'validate_mail');
 }
 if(isset($_POST['register'])){
