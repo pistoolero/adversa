@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 10 Lut 2017, 18:44
--- Wersja serwera: 10.1.19-MariaDB
--- Wersja PHP: 7.0.13
+-- Czas generowania: 11 Lut 2017, 20:22
+-- Wersja serwera: 10.1.21-MariaDB
+-- Wersja PHP: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,7 +45,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `name`, `created_at`, `created_by`, `is_superadmin`, `ban`, `add_post`, `modify_post`, `delete_post`, `manage_user`, `manage_site`) VALUES
-(1, 'Użytkownik', 1486745567, 14, 0, 0, 0, 0, 0, 0, 0);
+(1, 'Użytkownik', 1486745567, 14, 0, 0, 0, 0, 0, 0, 0),
+(3, 'Administrator', 1486745567, 14, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `mail`, `active`, `firstname`, `lastname`, `birthday`, `register`, `bio`, `photo`, `group_id`) VALUES
-(14, 'ratten', '$2y$10$BtVYd7atv.ZraM9eBbhGQOOqJ2zFYYe0j1a4mMPexhs/QZB5ildBq', 'morwiko@gmail.com', 'active', NULL, NULL, NULL, 1486745567, NULL, NULL, 1);
+(1, 'ratten', '$2y$10$BtVYd7atv.ZraM9eBbhGQOOqJ2zFYYe0j1a4mMPexhs/QZB5ildBq', 'morwiko@gmail.com', 'active', NULL, NULL, NULL, 1486745567, NULL, NULL, 3);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -102,12 +103,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- Ograniczenia dla zrzutów tabel
 --

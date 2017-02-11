@@ -121,6 +121,17 @@ Site::javascript('main');
     });
 </script>
 <script type="text/javascript">
+    $("#repeat_password").keypress(function(e){
+        if(e.keyCode === 13){
+            $("#register").click();
+        }
+    });
+    $(document).on('keypress', function(e) {
+        var tag = e.target.tagName.toLowerCase();
+        var id = e.target.id;
+        if ( e.which === 13 && tag == 'input' && tag != 'textarea' && (id == 'username' || id == 'password'))
+            $("#login").click();
+    });
     $(document).ready(function(){
         $("#add_err2").css('display', 'none', 'important');
         $("#register").click(function(){

@@ -61,5 +61,18 @@ class User extends Database
 
         return $result;
     }
+    public function getUserGroup($username) : array {
+        $user = $this->userData($username);
+        $result = $this->customQuery("SELECT * FROM groups WHERE id = ?","SELECT",[[$user['group_id'],1]]);
 
+        return $result;
+    }
+    public function checkAdmin($username) : bool{
+        $admin = $this->getUserGroup($username);
+        if($admin['is_superadmin']){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

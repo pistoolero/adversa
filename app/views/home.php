@@ -8,7 +8,10 @@
 echo "<!DOCTYPE html>".PHP_EOL."<html lang=\"pl\">".PHP_EOL;
 Site::load(VIEWS_PATH.'header');
 echo "<body>".PHP_EOL;
-
+if(Site::Session()){
+    $u_data2 = new User;
+    $u_data = $u_data2->userData($_SESSION['username']);
+}
 ?>
 
     <!-- header -->
@@ -63,13 +66,16 @@ echo "<body>".PHP_EOL;
                             <a alt="Mea" class="sub-menu-item" href="blog-single.html">Blog Single Page</a>
                         </div>
                     </li>
+                    <?php if(Site::Session()): ?>
                     <li class="dropdown sub-menu">
-                        <a alt="Mea" class="dropdown-toggle nav-link" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Contact Us</a>
+                        <a class="dropdown-toggle nav-link" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-fw fa-user"></i><?= $u_data['username']; ?></a>
                         <div class="dropdown-menu sub-menu-panel" aria-labelledby="dropdownMenu1">
-                            <a alt="Mea" class="sub-menu-item" href="contact-us.html">Contact Us 1</a>
+                           <?php if($u_data2->checkAdmin($u_data['username'])): ?> <a class="sub-menu-item" href="/admin">Dashboard</a><?php endif; ?>
+                            <a class="sub-menu-item" href="/logout">Wyloguj się</a>
                             <a alt="Mea" class="sub-menu-item" href="contact-us2.html">Contact Us 2</a>
                         </div>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </nav>
         </div>
